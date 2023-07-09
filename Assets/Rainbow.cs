@@ -2,23 +2,19 @@ using UnityEngine;
 
 public class Rainbow : MonoBehaviour
 {
-    // Fade the color from red to green
-    // back and forth over the defined duration
+    // Change colors of material by shifting over hue value for certain duration 
 
-    Color colorStart = Color.red;
-    Color colorEnd = Color.green;
- 
     float duration = 5.0f;
-    SkinnedMeshRenderer rend;
+    SkinnedMeshRenderer renderer;
 
     void Start()
     {
-        rend = GetComponentInChildren<SkinnedMeshRenderer>();
+        renderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     void Update()
     {
         float hue = Mathf.PingPong(Time.time, duration) / duration;
-        rend.material.color = Color.HSVToRGB(hue, 1.0f, 1.0f);
+        renderer.material.color = Color.HSVToRGB(hue, 1.0f, 1.0f);
     }
 }
